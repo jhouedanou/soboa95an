@@ -128,3 +128,68 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+# Configuration WordPress
+wp-config.php
+wp-config-*.php
+
+# Dossier uploads
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/backups/
+wp-content/cache/
+wp-content/advanced-cache.php
+wp-content/object-cache.php
+
+# Fichiers de log
+*.log
+error_log
+debug.log
+
+# Fichiers système
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Fichiers d'environnement
+.env
+.env.*
+
+# Dépendances
+node_modules/
+vendor/
+
+# Fichiers temporaires
+*.swp
+*.swo
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Fichiers de sauvegarde
+*.bak
+*.tmp
+*~
+wp-content/*
+!wp-content/themes/
+wp-content/themes/*
+!wp-content/themes/soboa95ans/
+wp-config.php
+wp-config-*.php
+wp-admin/
+wp-includes/
+
+# Fichiers core de WordPress
+/index.php
+/license.txt
+/readme.html
+/wp-*.php
+/xmlrpc.php
+
