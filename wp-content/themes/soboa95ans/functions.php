@@ -176,3 +176,35 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+function soboa95ans_register_slides_post_type() {
+    $labels = array(
+        'name'               => 'Slides',
+        'singular_name'      => 'Slide',
+        'menu_name'          => 'Slides',
+        'add_new'            => 'Ajouter un slide',
+        'add_new_item'       => 'Ajouter un nouveau slide',
+        'edit_item'          => 'Modifier le slide',
+        'new_item'           => 'Nouveau slide',
+        'view_item'          => 'Voir le slide',
+        'search_items'       => 'Rechercher des slides',
+        'not_found'          => 'Aucun slide trouvé',
+        'not_found_in_trash' => 'Aucun slide trouvé dans la corbeille'
+    );
+
+    $args = array(
+        'labels'              => $labels,
+        'public'              => true,
+        'has_archive'         => true,
+        'publicly_queryable'  => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array('slug' => 'slides'),
+        'capability_type'    => 'post',
+        'menu_icon'          => 'dashicons-images-alt2',
+        'supports'           => array('title', 'editor', 'thumbnail')
+    );
+
+    register_post_type('slides', $args);
+}
+add_action('init', 'soboa95ans_register_slides_post_type');
