@@ -208,3 +208,36 @@ function soboa95ans_register_slides_post_type() {
     register_post_type('slides', $args);
 }
 add_action('init', 'soboa95ans_register_slides_post_type');
+
+// Masquer la barre d'administration WordPress pour tous les utilisateurs sauf les administrateurs
+function masquer_barre_admin() {
+    if (!current_user_can('administrator') && !is_admin()) {
+        show_admin_bar(false);
+    }
+	show_admin_bar(false);
+   
+}
+add_action('after_setup_theme', 'masquer_barre_admin');
+
+
+
+function soboa95ans_custom_scripts() {
+    // Styles
+    wp_enqueue_style('soboa95ans-style', get_stylesheet_uri(), array(), _S_VERSION);
+    wp_enqueue_style('bootstrap-css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
+    wp_enqueue_style('swiper-css', 'https://unpkg.com/swiper/swiper-bundle.min.css');
+    wp_enqueue_style('soboa95ans-custom', get_template_directory_uri() . '/custom.css');
+
+    // Scripts
+    wp_enqueue_script('bootstrap-bundle', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js', array(), '5.3.2', true);
+    wp_enqueue_script('masonry-js', 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js', array(), '4.0.0', true);
+    wp_enqueue_script('swiper-js', 'https://unpkg.com/swiper/swiper-bundle.min.js', array(), '1.0.0', true);
+    wp_enqueue_script('soboa95ans-customsscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), _S_VERSION, true);
+}
+add_action('wp_enqueue_scripts', 'soboa95ans_custom_scripts');
+
+// Masquer la barre d'administration
+
+add_action('after_setup_theme', 'masquer_barre_admin');
+
+// Custom Post Type pour les slides

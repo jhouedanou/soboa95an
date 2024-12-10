@@ -1,0 +1,396 @@
+$primary  : #204081;
+$secondary: #ec6c23; // Font faces
+
+@font-face {
+    font-family: 'TextaProAlt-BlackIt';
+    src        : url('fonts/textaproalt-blackit-webfont.woff2') format('woff2'),
+        url('fonts/textaproalt-blackit-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style : normal;
+}
+
+@font-face {
+    font-family: 'Gilroy-Bold';
+    src        : url('fonts/gilroy-bold-webfont.woff2') format('woff2'),
+        url('fonts/gilroy-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style : normal;
+}
+
+@font-face {
+    font-family: 'Gilroy-Heavy';
+    src        : url('fonts/gilroy-heavy-webfont.woff2') format('woff2'),
+        url('fonts/gilroy-heavy-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style : normal;
+}
+
+@font-face {
+    font-family: 'Gilroy-Light';
+    src        : url('fonts/gilroy-light-webfont.woff2') format('woff2'),
+        url('fonts/gilroy-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style : normal;
+}
+
+@font-face {
+    font-family: 'Gilroy-Medium';
+    src        : url('fonts/gilroy-medium-webfont.woff2') format('woff2'),
+        url('fonts/gilroy-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style : normal;
+}
+
+@font-face {
+    font-family: 'Gilroy-Regular';
+    src        : url('fonts/gilroy-regular-webfont.woff2') format('woff2'),
+        url('fonts/gilroy-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style : normal;
+}
+
+@font-face {
+    font-family: 'Gotham-Black';
+    src        : url('fonts/gotham-black-webfont.woff2') format('woff2'),
+        url('fonts/gotham-black-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style : normal;
+}
+
+@font-face {
+    font-family: 'Gotham-Medium';
+    src        : url('fonts/gotham-medium-webfont.woff2') format('woff2'),
+        url('fonts/gotham-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style : normal;
+}
+
+@font-face {
+    font-family: 'TextaPro-Heavy';
+    src        : url('fonts/textapro-heavy-webfont.woff2') format('woff2'),
+        url('fonts/textapro-heavy-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style : normal;
+}
+
+@font-face {
+    font-family: 'TextaProAlt-Light';
+    src        : url('fonts/textaproalt-light-webfont.woff2') format('woff2'),
+        url('fonts/textaproalt-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style : normal;
+}
+
+// Variables
+$font-texta-black: 'TextaProAlt-BlackIt',
+sans-serif;
+$font-gilroy-bold: 'Gilroy-Bold',
+sans-serif;
+$font-gilroy-heavy: 'Gilroy-Heavy',
+sans-serif;
+$font-gilroy-light: 'Gilroy-Light',
+sans-serif;
+$font-gilroy-medium: 'Gilroy-Medium',
+sans-serif;
+$font-gilroy-regular: 'Gilroy-Regular',
+sans-serif;
+$font-gotham-black: 'Gotham-Black',
+sans-serif;
+$font-gotham-medium: 'Gotham-Medium',
+sans-serif;
+$font-texta-heavy: 'TextaPro-Heavy',
+sans-serif;
+$font-texta-light: 'TextaProAlt-Light',
+sans-serif;
+
+// Styles globaux
+body {
+    font-family: $font-gilroy-regular;
+}
+
+.gilroy {
+    font-family: $font-gilroy-regular;
+
+    &-bold {
+        font-family: $font-gilroy-bold;
+    }
+
+    &-heavy {
+        font-family: $font-gilroy-heavy;
+    }
+
+    &-light {
+        font-family: $font-gilroy-light;
+    }
+
+    &-medium {
+        font-family: $font-gilroy-medium;
+    }
+}
+
+// #titresection {
+//     font-family: $font-gilroy-bold;
+//     text-transform: uppercase;
+// }
+
+// #celebreavecnoous {
+//     font-family: $font-texta-black;
+//     font-size: 2rem;
+// }
+
+// #bubble {
+//     font-family: $font-texta-light;
+//     font-size: 1.5rem;
+// }
+
+// #bubblin {
+//     font-family: $font-texta-heavy;
+//     font-size: 1.2rem;
+// }
+
+
+/* Custom styles */
+.masonry-grid {
+    display  : flex;
+    flex-wrap: wrap;
+    gap      : 20px;
+}
+
+.swiper-container {
+    width : 100%;
+    height: 100%;
+}
+
+.wp-block-gallery.swiper-container {
+    height: 500px;
+
+    .swiper-slide {
+        display        : flex;
+        align-items    : center;
+        justify-content: center;
+
+        img {
+            max-height: 100%;
+            width     : auto;
+            object-fit: contain;
+        }
+    }
+
+    .swiper-pagination-bullet {
+        background: #fff;
+        opacity   : 0.5;
+
+        &-active {
+            opacity: 1;
+        }
+    }
+}
+
+.menu-toggle {
+
+    &:focus,
+    &:active {
+        outline   : none;
+        border    : none;
+        box-shadow: none;
+    }
+}
+
+.menu-toggle {
+    width     : 30px;
+    height    : 17px;
+    position  : relative;
+    background: transparent;
+    border    : none;
+    cursor    : pointer;
+    padding   : 0;
+    z-index   : 100;
+
+    span {
+        display   : block;
+        position  : absolute;
+        height    : 3px;
+        width     : 100%;
+        background: $primary;
+        transition: all 0.3s ease;
+
+        &:nth-child(1) {
+            top             : 0;
+            transform-origin: center;
+        }
+
+        &:nth-child(2) {
+            top       : 50%;
+            transform : translateY(-50%);
+            transition: opacity 0.3s ease;
+        }
+
+        &:nth-child(3) {
+            bottom          : 0;
+            transform-origin: center;
+        }
+    }
+}
+
+.navbar-toggler[aria-expanded="true"] {
+    span {
+        &:nth-child(1) {
+            transform: rotate(45deg);
+            top      : 11px;
+        }
+
+        &:nth-child(2) {
+            opacity: 0;
+        }
+
+        &:nth-child(3) {
+            transform: rotate(-45deg);
+            bottom   : 11px;
+        }
+    }
+}
+
+.main-navigation {
+    @media (max-width: 768px) {
+        #primary-menu {
+            display   : none;
+            position  : absolute;
+            top       : 60px;
+            left      : 0;
+            width     : 100%;
+            background: #fff;
+            padding   : 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+            &.show {
+                display: block;
+            }
+        }
+    }
+}
+
+.navbar-nav {
+    width  : 100%;
+    padding: 1rem;
+
+    @media (max-width: 991px) {
+        background: #fff;
+        position  : absolute;
+        top       : 100%;
+        left      : 0;
+        right     : 0;
+    }
+}
+
+.nav-item {
+    margin: 0.5rem 0;
+}
+
+
+
+.custom-logo {
+    height: 38px;
+    width : auto;
+}
+
+.site-branding {
+    display    : flex;
+    align-items: center;
+}
+
+.main-navigation {
+    margin-left: auto;
+}
+
+.menu-toggle {
+    margin-left: auto;
+}
+
+.site-header {
+    background     : #fff;
+    position       : fixed;
+    width          : 100%;
+    top            : 0;
+    left           : 0;
+    z-index        : 1000;
+    padding        : 0.5rem 0rem;
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    box-shadow     : 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.custom-logo {
+    height: 33px;
+    width : auto;
+}
+
+.site-branding {
+    display    : flex;
+    align-items: center;
+}
+
+.main-navigation {
+    margin-left: auto;
+}
+
+.menu-toggle {
+    margin-left: auto;
+}
+
+.site-main {
+    padding-top: 2em;
+}
+
+//main swiiper 
+
+.entry-content {
+    height  : 100vh;
+    overflow: hidden;
+    margin  : 0em;
+    padding : 0em;
+
+    .swiper-container {
+        height: 100vh;
+    }
+
+    .swiper-slide {
+        height    : auto;
+        overflow-y: auto;
+    }
+}
+
+.entry-content {
+    .wp-block-group {
+
+        height: 100vh;
+    }
+
+    #intro {
+
+        background             : url(images/bg1.webp) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size   : cover;
+        -o-background-size     : cover;
+        background-size        : cover;
+
+    }
+
+    p {
+
+        font-family   : 'TextaPro-Heavy';
+        font-size     : 86.1px;
+        font-weight   : 900;
+        font-stretch  : normal;
+        font-style    : normal;
+        line-height   : 0.86;
+        letter-spacing: normal;
+        text-align    : center;
+        color         : white;
+
+        strong {
+
+            color: #ec6c23;
+        }
+    }
+}
