@@ -12,6 +12,42 @@ document.addEventListener('DOMContentLoaded', function() {
     // Autres initialisations futures...
 });
 jQuery(document).ready(function($) {
+
+        // Initialiser Masonry
+        var $grid = $('#klm').masonry({
+            itemSelector: 'figure',
+            columnWidth: 'figure',
+            percentPosition: true,
+            gutter: 0
+        });
+        
+        // Initialiser Magnific Popup
+        $('#klm').magnificPopup({
+            delegate: 'img',
+            type: 'image',
+          gallery: {
+                enabled: true
+            },
+            image: {
+                verticalFit: true,
+                titleSrc: function(item) {
+                    return item.el.attr('alt');
+                }
+            },
+            callbacks: {
+                elementParse: function(item) {
+                    item.src = item.el.attr('src');
+                }
+            }
+        });
+        
+        // Réinitialiser Masonry après le chargement des images
+        $grid.imagesLoaded().progress(function() {
+            $grid.masonry('layout');
+        });
+    
+    //animations du texte 
+    //galerie photo
     const galleries = document.querySelectorAll('.aleure.wp-block-gallery');
     
     galleries.forEach(gallery => {
