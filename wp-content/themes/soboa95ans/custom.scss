@@ -503,6 +503,8 @@ body {
 
         //   height: 100vh;
         &#nos95ans {
+            padding-bottom: 3em;
+
             .wp-block-image {
                 &:nth-of-type(2) {
                     // background: red;
@@ -511,6 +513,10 @@ body {
                         width: 146px !important;
                     }
                 }
+            }
+
+            .wp-block-gallery {
+                margin-top: 1em;
             }
 
             .wp-block-column {
