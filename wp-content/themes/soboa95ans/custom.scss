@@ -500,6 +500,7 @@ body {
     }
 
     .wp-block-group {
+        position: relative;
 
         //   height: 100vh;
         &#nos95ans {
@@ -564,7 +565,39 @@ body {
         }
 
         &#soboadepuis95abs {
-            background: #fff;
+
+
+            background-size        : cover;
+            background-position    : center;
+            -webkit-background-size: cover;
+            -moz-background-size   : cover;
+            -o-background-size     : cover;
+            background-size        : cover;
+            filter                 : progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+            -ms-filter             : "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+
+
+            #merdf {
+
+                p {
+                    font-family   : "Gilroy-Regular";
+                    font-size     : 8.2px;
+                    letter-spacing: -0.19px;
+                    color         : #fff;
+                }
+
+                h2 {
+                    text-transform: uppercase;
+                    font-family   : 'Gilroy-Bold';
+                    font-size     : 22.4px;
+                    font-stretch  : normal;
+                    font-style    : normal;
+                    line-height   : 22px;
+                    letter-spacing: normal;
+                    text-align    : center;
+                    color         : #fff;
+                }
+            }
         }
 
         &#gazellelomonda {
