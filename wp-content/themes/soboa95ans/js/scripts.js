@@ -11,43 +11,60 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Autres initialisations futures...
 });
-document.addEventListener('DOMContentLoaded', function() {
-    // Wrapper le contenu dans la structure Swiper
-    const entryContent = document.querySelector('.entry-content');
-    if (entryContent) {
-        const groups = entryContent.querySelectorAll('.wp-block-group');
-        
-        // Créer le container Swiper
+jQuery(document).ready(function($) {
+    const galleries = document.querySelectorAll('.aleure.wp-block-gallery');
+    
+    galleries.forEach(gallery => {
         const swiperContainer = document.createElement('div');
-        swiperContainer.className = 'swiper-container main-swiper';
+        swiperContainer.className = 'swiper-container';
         const swiperWrapper = document.createElement('div');
         swiperWrapper.className = 'swiper-wrapper';
         
-        // Déplacer chaque groupe dans un slide
-        groups.forEach(group => {
+        gallery.querySelectorAll('figure').forEach(figure => {
             const slide = document.createElement('div');
             slide.className = 'swiper-slide';
-            slide.appendChild(group);
+            slide.appendChild(figure.cloneNode(true));
             swiperWrapper.appendChild(slide);
         });
         
-        // Assembler la structure
         swiperContainer.appendChild(swiperWrapper);
-        entryContent.appendChild(swiperContainer);
+        gallery.innerHTML = '';
+        gallery.appendChild(swiperContainer);
         
-        // Initialiser Swiper
-        new Swiper('.main-swiper', {
-            direction: 'vertical',
-            slidesPerView: 1,
-            speed: 800,
-            mousewheel: true,
-            keyboard: {
-                enabled: true
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true
+        new Swiper(swiperContainer, {
+            slidesPerView: 2,
+            spaceBetween: 20,
+            loop: true,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false
+                    },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
             }
         });
-    }
+        
+        // Mise à jour de la configuration Magnific Popup
+        $(gallery).magnificPopup({
+            delegate: '.wp-block-image img',
+            type: 'image',
+            gallery: {
+                enabled: true
+            },
+            image: {
+                verticalFit: true,
+                titleSrc: function(item) {
+                    return item.el.attr('alt');
+                }
+            },
+            callbacks: {
+                elementParse: function(item) {
+                    item.src = item.el.attr('src');
+                }
+            }
+        });
+    });
 });
+
+
