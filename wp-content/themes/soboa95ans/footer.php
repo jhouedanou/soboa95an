@@ -11,24 +11,22 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'soboa95ans' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'soboa95ans' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'soboa95ans' ), 'soboa95ans', '<a href="https://bigfivesolutions.com">Jean Luc Houédnaou</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+<footer id="colophon" class="site-footer">
+    <div id="liboul">
+
+        <div class="logosoboa">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/logo.webp" alt="CDV">
+        </div>
+        <div class="footer-image">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/slogan.webp" alt="CDV">
+        </div>
+    </div>
+
+</footer><!-- #colophon -->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
 
 </body>
+
 </html>

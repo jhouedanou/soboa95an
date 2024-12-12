@@ -49,16 +49,40 @@
                     </button>
 
                     <?php
-            wp_nav_menu(
-                array(
-                    'theme_location' => 'menu-1',
-                    'menu_id'        => 'primary-menu',
-                    'menu_class'     => 'navbar-nav',
-                    'container_class'=> 'collapse navbar-collapse',
-                    'container_id'   => 'primary-menu'
-                )
-            );
-            ?>
+            // wp_nav_menu(
+            //     array(
+            //         'theme_location' => 'menu-1',
+            //         'menu_id'        => 'primary-menu',
+            //         'menu_class'     => 'navbar-nav',
+            //         'container_class'=> 'collapse navbar-collapse',
+            //         'container_id'   => 'primary-menu'
+            //     )
+            // );
+            wp_nav_menu(array(
+                'theme_location' => 'menu-1',
+                'menu_id' => 'primary-menu',
+                'walker' => new Soboa95ans_Menu_Walker()
+            ));
+            
+    class Soboa95ans_Menu_Walker extends Walker_Nav_Menu {
+        function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
+            // Convertir les classes en array si ce n'est pas déjà le cas
+            $classes = empty($item->classes) ? array() : (array) $item->classes;
+        
+            $output .= '<li class="' . esc_attr(join(' ', $classes)) . '">';
+        
+            $output .= '<a href="' . esc_url($item->url) . '">';
+        
+            if ($menu_image = get_post_meta($item->ID, '_menu_item_image', true)) {
+                $output .= '<img src="' . esc_url($menu_image) . '" class="menu-item-image" alt="' . esc_attr($item->title) . '">';
+            }
+        
+            $output .= $item->title . '</a>';
+        }
+    }
+
+            
+                ?>
                 </nav>
             </div>
         </header>

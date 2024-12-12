@@ -105,7 +105,7 @@ msgstr ""
 #. translators: %s: post date.
 #: inc/template-tags.php:30
 msgctxt "post date"
-msgid "Posted on %s"
+msgid "Publié le %s"
 msgstr ""
 
 #. translators: %s: post author.
@@ -121,7 +121,7 @@ msgstr ""
 
 #. translators: 1: list of categories.
 #: inc/template-tags.php:66
-msgid "Posted in %1$s"
+msgid "Publié dans %1$s"
 msgstr ""
 
 #. translators: used between list items, there is a space after the comma

@@ -123,7 +123,7 @@ gulp.task('browser-sync', function () {
         //     directory: true
         //  },
         online: true,
-        proxy: "localhost/soboa/soboa95an",
+        proxy: "localhost/soboa95ans/",
         notify: true
     });
 });

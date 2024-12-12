@@ -183,3 +183,86 @@ function soboa95ans_custom_scripts() {
 	wp_enqueue_script('soboa95ans-customsscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), _S_VERSION, true);
 }
 add_action('wp_enqueue_scripts', 'soboa95ans_custom_scripts');
+
+// Ajouter le champ personnalisé dans le menu
+function soboa95ans_add_menu_image_field($item_id, $item) {
+    $menu_image = get_post_meta($item_id, '_menu_item_image', true);
+    ?>
+<div class="field-image description description-wide">
+    <label for="menu-item-image-<?php echo $item_id; ?>">
+        <?php _e('Image du menu', 'soboa95ans'); ?>
+    </label>
+    <div class="menu-item-image-container">
+        <?php if($menu_image) : ?>
+        <img src="<?php echo esc_url($menu_image); ?>" class="menu-item-image-preview">
+        <?php endif; ?>
+        <input type="hidden" class="menu-item-image-url" name="menu-item-image[<?php echo $item_id; ?>]"
+            value="<?php echo esc_attr($menu_image); ?>">
+        <button type="button" class="upload-menu-item-image button">
+            <?php _e('Choisir une image', 'soboa95ans'); ?>
+        </button>
+        <button type="button" class="remove-menu-item-image button"
+            <?php echo empty($menu_image) ? 'style="display:none;"' : ''; ?>>
+            <?php _e('Supprimer', 'soboa95ans'); ?>
+        </button>
+    </div>
+</div>
+<?php
+}
+add_action('wp_nav_menu_item_custom_fields', 'soboa95ans_add_menu_image_field', 10, 2);
+
+// Sauvegarder l'image
+function soboa95ans_save_menu_image($menu_id, $menu_item_db_id) {
+    if(isset($_POST['menu-item-image'][$menu_item_db_id])) {
+        update_post_meta($menu_item_db_id, '_menu_item_image', $_POST['menu-item-image'][$menu_item_db_id]);
+    }
+}
+add_action('wp_update_nav_menu_item', 'soboa95ans_save_menu_image', 10, 2);
+
+// Ajouter le JavaScript nécessaire
+function soboa95ans_admin_menu_scripts() {
+    if(get_current_screen()->base !== 'nav-menus') return;
+    
+    wp_enqueue_media();
+    
+    wp_add_inline_script('jquery', '
+        jQuery(document).ready(function($) {
+            $(document).on("click", ".upload-menu-item-image", function(e) {
+                e.preventDefault();
+                var button = $(this);
+                var container = button.closest(".menu-item-image-container");
+                var imageInput = container.find(".menu-item-image-url");
+                var preview = container.find(".menu-item-image-preview");
+                var removeButton = container.find(".remove-menu-item-image");
+                
+                var frame = wp.media({
+                    title: "Sélectionner une image",
+                    multiple: false
+                });
+                
+                frame.on("select", function() {
+                    var attachment = frame.state().get("selection").first().toJSON();
+                    imageInput.val(attachment.url);
+                    
+                    if(!preview.length) {
+                        preview = $("<img>", {class: "menu-item-image-preview"});
+                        container.prepend(preview);
+                    }
+                    preview.attr("src", attachment.url);
+                    removeButton.show();
+                });
+                
+                frame.open();
+            });
+            
+            $(document).on("click", ".remove-menu-item-image", function(e) {
+                e.preventDefault();
+                var container = $(this).closest(".menu-item-image-container");
+                container.find(".menu-item-image-preview").remove();
+                container.find(".menu-item-image-url").val("");
+                $(this).hide();
+            });
+        });
+    ');
+}
+add_action('admin_enqueue_scripts', 'soboa95ans_admin_menu_scripts');
